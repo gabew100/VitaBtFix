@@ -1,0 +1,5 @@
+# Add this line under *KERNEL in ur0:tai/config.txt
+# (or ux0:tai/config.txt if that is the one your taiHEN uses)
+
+*KERNEL
+ur0:tai/vitabtfix.skprx

@@ -1,0 +1,14 @@
+build/
+*.skprx
+*.velf
+*.elf
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+.vscode/
+dump/
+nosleep/
+HANDOFF.md
+build-docker/
+*.pcapng
