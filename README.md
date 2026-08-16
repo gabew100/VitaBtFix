@@ -8,7 +8,7 @@ The Vita already pairs and can control volume. Some newer headsets still stay si
 
 | Device | Working |
 |---|---|
-| AirPods Pro 2 | Yes |
+| AirPods Pro 2 | ✅ |
 
 ## Install
 
