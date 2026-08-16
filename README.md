@@ -1,34 +1,45 @@
 # VitaBtFix
 
-Lets newer AirPods play sound on a jailbroken PS Vita. Other picky Bluetooth headphones may work too.
+Allows newer AirPods to play audio on a jailbroken PS Vita. Other Bluetooth headphones with the same compatibility issue may work too.
 
-The Vita already pairs and can control volume. Some newer headsets still stay silent. Sony’s Bluetooth stack stamps each audio packet with the wrong clock. This plugin fixes that.
+The Vita can pair with some newer Bluetooth headphones and control their volume, but audio remains silent. VitaBtFix corrects the A2DP timestamp behavior in Sony's Bluetooth stack that causes this issue.
 
-## Compatible
+> **VitaBtFix is currently experimental.** It has been confirmed working with AirPods Pro 2 on PS Vita firmware 3.65.
 
-| Device | Working |
-|---|---|
-| AirPods Pro 2 | ✅ |
+## Compatibility
+
+| Device        | Vita firmware | Status      |
+| ------------- | ------------- | ----------- |
+| AirPods Pro 2 | 3.65          | ✅ Confirmed |
+
+Other Vita firmware versions and Bluetooth headphones are currently untested. Reports are welcome.
+
+When reporting compatibility, include your Vita firmware, headphone model, and whether audio works.
 
 ## Install
 
-1. Copy `vitabtfix.skprx` to `ur0:tai/`.
-2. Under `*KERNEL` in `ur0:tai/config.txt`:
+1. Download `vitabtfix.skprx` from the [latest release](https://github.com/gabew100/VitaBtFix/releases).
+2. Copy `vitabtfix.skprx` to `ur0:tai/`.
+3. Add the following line under `*KERNEL` in `ur0:tai/config.txt`:
 
-```
+```text
 ur0:tai/vitabtfix.skprx
 ```
 
-3. Reboot.
-4. Pair the headphones and play something.
-
-If nothing changes, check `ux0:data/vitabtfix/log.txt` for `patch: +… -> +512 ok`. If you see `no +8000 timestamp add`, this firmware’s Bluetooth module is different and the plugin will not help.
+4. Reboot the Vita.
+5. Pair your headphones and play something.
 
 ## Config
 
-Written on first boot to `ux0:data/vitabtfix/config.txt`:
+A configuration file is created on first boot at:
 
+```text
+ux0:data/vitabtfix/config.txt
 ```
+
+Default configuration:
+
+```text
 debug=0
 target_volume=100
 force_start_audio=1
@@ -36,25 +47,75 @@ force_avrcp_volume=1
 # mac=AA:BB:CC:DD:EE:FF
 ```
 
-- `target_volume` is absolute volume, 0–127.
-- Empty `mac=` matches any device named AirPods or with Apple vendor ID `0x004C`. Add a `mac=` line to target a specific headset.
-- `debug=1` logs a bit more to `ux0:data/vitabtfix/log.txt`.
+* `target_volume` is the AVRCP absolute volume sent to targeted headphones when `force_avrcp_volume=1`. Valid range: 0–127. Default: 100.
+* `force_start_audio=1` attempts to start the A2DP audio stream after a target device connects.
+* `force_avrcp_volume=1` sends `target_volume` to the headset using AVRCP absolute volume.
+* With no `mac=` entries, devices named AirPods or reporting Apple vendor ID `0x004C` are targeted.
+* Adding one or more `mac=` entries limits the connection-time audio/volume workaround to those devices.
+* The SceBt timestamp correction itself is system-wide while the plugin is loaded.
+* `debug=1` enables additional logging in `ux0:data/vitabtfix/log.txt`.
+
+## Troubleshooting
+
+If VitaBtFix does not work:
+
+* Make sure `vitabtfix.skprx` is listed under `*KERNEL` in `ur0:tai/config.txt`.
+* Make sure the path in `config.txt` matches where you copied the plugin.
+* Reboot the Vita after installing or changing the plugin.
+* Check `ux0:data/vitabtfix/log.txt` for a line similar to:
+
+```text
+patch: +… -> +512 ok
+```
+
+* If you see:
+
+```text
+no +8000 timestamp add
+```
+
+VitaBtFix could not recognize the required code pattern and will leave the Bluetooth module untouched.
+
+If the Vita has trouble booting after installation, hold **L** while booting to skip kernel plugins, then remove or rename `vitabtfix.skprx`.
+
+When reporting a problem, include your Vita firmware version and headphone model. If possible, also attach `ux0:data/vitabtfix/log.txt`.
 
 ## Disable
 
-Hold **L** at boot to skip kernel plugins, then delete or rename `ur0:tai/vitabtfix.skprx` and reboot.
+Hold **L** while booting to skip kernel plugins, then delete or rename:
+
+```text
+ur0:tai/vitabtfix.skprx
+```
+
+Remove its line from `ur0:tai/config.txt`, then reboot.
 
 ## Build
 
-[VitaSDK](https://vitasdk.org/) in Docker:
+Build using [VitaSDK](https://vitasdk.org/) in Docker:
 
-```
+```bash
 docker run --rm -v "/path/to/Vita BT:/src" -w /src vitasdk/vitasdk \
   bash -lc 'export VITASDK=/usr/local/vitasdk; export PATH="$VITASDK/bin:$PATH"; mkdir -p build-docker; cd build-docker; cmake .. && make -j2'
 ```
 
-Output: `build-docker/vitabtfix.skprx`.
+Output:
 
-## What it does not do
+```text
+build-docker/vitabtfix.skprx
+```
 
-AAC / LE Audio only headsets, pairing problems, dropouts, or delay. The Vita is Bluetooth 2.1+EDR and SBC only.
+## Limitations
+
+VitaBtFix does not add support for:
+
+* AAC-only or LE Audio-only headphones
+* Bluetooth pairing problems
+* Connection dropouts
+* Bluetooth audio latency
+
+The PS Vita uses Bluetooth 2.1+EDR and SBC for Bluetooth audio.
+
+## License
+
+VitaBtFix is licensed under the [MIT License](LICENSE).
