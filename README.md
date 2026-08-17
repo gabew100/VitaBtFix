@@ -1,6 +1,6 @@
 # VitaBtFix
 
-Allows newer AirPods to play audio on a jailbroken PS Vita. Other Bluetooth headphones with the same compatibility issue may work too.
+Allows newer AirPods (and other modern bluetooth headphones) to play audio on a jailbroken PS Vita. 
 
 The Vita can pair with some newer Bluetooth headphones and control their volume, but audio remains silent. VitaBtFix corrects the A2DP timestamp behavior in Sony's Bluetooth stack that causes this issue.
 
