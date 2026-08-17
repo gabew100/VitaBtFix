@@ -29,32 +29,6 @@ ur0:tai/vitabtfix.skprx
 4. Reboot the Vita.
 5. Pair your headphones and play something.
 
-## Config
-
-A configuration file is created on first boot at:
-
-```text
-ux0:data/vitabtfix/config.txt
-```
-
-Default configuration:
-
-```text
-debug=0
-target_volume=100
-force_start_audio=1
-force_avrcp_volume=1
-# mac=AA:BB:CC:DD:EE:FF
-```
-
-* `target_volume` is the AVRCP absolute volume sent to targeted headphones when `force_avrcp_volume=1`. Valid range: 0–127. Default: 100.
-* `force_start_audio=1` attempts to start the A2DP audio stream after a target device connects.
-* `force_avrcp_volume=1` sends `target_volume` to the headset using AVRCP absolute volume.
-* With no `mac=` entries, devices named AirPods or reporting Apple vendor ID `0x004C` are targeted.
-* Adding one or more `mac=` entries limits the connection-time audio/volume workaround to those devices.
-* The SceBt timestamp correction itself is system-wide while the plugin is loaded.
-* `debug=1` enables additional logging in `ux0:data/vitabtfix/log.txt`.
-
 ## Troubleshooting
 
 If VitaBtFix does not work:

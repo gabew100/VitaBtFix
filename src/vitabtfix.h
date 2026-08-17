@@ -1,7 +1,7 @@
 #ifndef VITABTFIX_H
 #define VITABTFIX_H
 
-#define PLUGIN_VERSION "1.0"
+#define PLUGIN_VERSION "1.1"
 #define PLUGIN_DIR     "ux0:data/vitabtfix"
 #define PLUGIN_LOG     "ux0:data/vitabtfix/log.txt"
 #define PLUGIN_CFG     "ux0:data/vitabtfix/config.txt"

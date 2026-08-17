@@ -22,7 +22,6 @@ add_executable(${PROJECT_NAME}
 include_directories(src)
 
 target_link_libraries(${PROJECT_NAME}
-  SceBtForDriver_stub
   SceIofilemgrForDriver_stub
   # 3.65 uses the 3.63+ NID set: ksceKernelGetModuleInfo is 0xDAA90093 here,
   # vs 0xD269F915 on 3.60. Linking the plain stub leaves the import unresolved
