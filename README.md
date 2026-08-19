@@ -13,6 +13,7 @@ The Vita can pair with some newer Bluetooth headphones and control their volume,
 | AirPods Pro 2 | 3.65          | ✅ Works |
 | AirPods Pro 3 | 3.65          | ✅ Works |
 | AirPods 4 | 3.65          | ✅ Works |
+| SHOKZ OpenRun Pro 2 | 3.65          | ✅ Works |
 
 Other Vita firmware versions and Bluetooth headphones are currently untested. Reports are welcome.
 
