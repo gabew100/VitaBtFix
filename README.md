@@ -4,6 +4,8 @@ Allows newer AirPods (and other modern bluetooth headphones) to play audio on a 
 
 The Vita can pair with some newer Bluetooth headphones and control their volume, but audio remains silent. VitaBtFix corrects the A2DP timestamp behavior in Sony's Bluetooth stack that causes this issue.
 
+*Requires PS Vita firmware 3.63 or newer.*
+
 > **VitaBtFix is currently experimental.** 
 
 ## Compatibility
