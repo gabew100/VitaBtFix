@@ -23,10 +23,11 @@ include_directories(src)
 
 target_link_libraries(${PROJECT_NAME}
   SceIofilemgrForDriver_stub
-  # 3.65 uses the 3.63+ NID set: ksceKernelGetModuleInfo is 0xDAA90093 here,
-  # vs 0xD269F915 on 3.60. Linking the plain stub leaves the import unresolved
-  # and the plugin silently fails to load.
-  SceModulemgrForKernel_363_stub
+  # 3.60-only build: ksceKernelGetModuleInfo is 0xD269F915 in the 3.60 NID
+  # set (SceModulemgrForKernel), vs 0xDAA90093 on 3.63+. Linking the _363
+  # stub leaves the import unresolved on 3.60 and the plugin silently fails
+  # to load.
+  SceModulemgrForKernel_stub
   SceSysclibForDriver_stub
   SceSysmemForDriver_stub
   SceThreadmgrForDriver_stub

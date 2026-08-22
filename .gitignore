@@ -1,4 +1,5 @@
 build/
+build-360/
 *.skprx
 *.velf
 *.elf
