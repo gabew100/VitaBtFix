@@ -26,7 +26,7 @@ When reporting compatibility, include your Vita firmware, headphone model, and w
 
 ## Install
 
-1. Download `vitabtfix.skprx` from the [latest release](https://github.com/gabew100/VitaBtFix/releases).
+1. Download `vitabtfix.skprx` from the [latest release](https://github.com/gabew100/VitaBtFix/releases). **If you download the 3.60 version, you must rename it to `vitabtfix.skprx`.**
 2. Copy `vitabtfix.skprx` to `ur0:tai/`.
 3. Add the following line under `*KERNEL` in `ur0:tai/config.txt`:
 
