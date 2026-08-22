@@ -6,18 +6,21 @@ The Vita can pair with some newer Bluetooth headphones and control their volume,
 
 *Requires PS Vita firmware 3.63 or newer.*
 
+*On firmware 3.60–3.62? Download the [3.60 build](https://github.com/gabew100/VitaBtFix/releases) instead.*
+
 > **VitaBtFix is currently experimental.** 
 
 ## Compatibility
 
-| Device        | Vita firmware | Status      |
-| ------------- | ------------- | ----------- |
-| AirPods Pro 2 | 3.65          | ✅ Works |
-| AirPods Pro 3 | 3.65          | ✅ Works |
-| AirPods 4 | 3.65          | ✅ Works |
-| SHOKZ OpenRun Pro 2 | 3.65          | ✅ Works |
+| Device       | Status      |
+| ------------- | ----------- |
+| AirPods Pro 2 | ✅ Works |
+| AirPods Pro 3 | ✅ Works |
+| AirPods 4 | ✅ Works |
+| SAMSUNG Galaxy Buds Pro | ✅ Works |
+| SHOKZ OpenRun Pro 2 | ✅ Works |
 
-Other Vita firmware versions and Bluetooth headphones are currently untested. Reports are welcome.
+Reports above were collected on firmware 3.65 using the main build. A separate [3.60 build](https://github.com/gabew100/VitaBtFix/releases) applies the same SceBt patch for firmware 3.60–3.62.
 
 When reporting compatibility, include your Vita firmware, headphone model, and whether audio works.
 
